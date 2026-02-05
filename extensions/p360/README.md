@@ -4,7 +4,7 @@ Check your decision readiness instantly based on real-time biometric data from y
 
 ## The Problem
 
-You have all the biometric data from your Oura Ring, but what do you actually *do* with it in the moment?
+You have all the biometric data from your Oura Ring, but what do you actually _do_ with it in the moment?
 
 - Making impulsive purchases when tired
 - Sending emails you regret when stressed
@@ -22,12 +22,12 @@ P360 gives you **real-time decision support** right from your Raycast launcher. 
 
 ### Score Meanings
 
-| Score | Status | Recommendation |
-|-------|--------|----------------|
+| Score     | Status    | Recommendation                                                    |
+| --------- | --------- | ----------------------------------------------------------------- |
 | 🟢 70-100 | Excellent | Great time for negotiations, important emails, strategic planning |
-| 🔵 50-69 | Good | Good for everyday decisions, proceed with confidence |
-| 🟡 30-49 | Caution | Consider delaying big decisions by a few hours |
-| 🔴 0-29 | Poor | Avoid major commitments, focus on recovery |
+| 🔵 50-69  | Good      | Good for everyday decisions, proceed with confidence              |
+| 🟡 30-49  | Caution   | Consider delaying big decisions by a few hours                    |
+| 🔴 0-29   | Poor      | Avoid major commitments, focus on recovery                        |
 
 ## Features
 
@@ -62,4 +62,4 @@ P360 is a real-time bio-data driven decision support solution for bio-hackers an
 
 ---
 
-*Your body knows when you're ready for important decisions. We just translate the signal.*
+_Your body knows when you're ready for important decisions. We just translate the signal._

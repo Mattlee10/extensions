@@ -13,15 +13,16 @@
 ### How It Works
 
 Your decision readiness is calculated from:
+
 - Oura Readiness Score (primary)
 - Sleep Score (fallback)
 - HRV Balance (modifier)
 
 ### Score Guide
 
-| Score | Meaning |
-|-------|---------|
-| 🟢 70+ | Excellent - Great for important decisions |
-| 🔵 50-69 | Good - Proceed with everyday decisions |
-| 🟡 30-49 | Caution - Consider waiting |
-| 🔴 <30 | Poor - Focus on recovery |
+| Score    | Meaning                                   |
+| -------- | ----------------------------------------- |
+| 🟢 70+   | Excellent - Great for important decisions |
+| 🔵 50-69 | Good - Proceed with everyday decisions    |
+| 🟡 30-49 | Caution - Consider waiting                |
+| 🔴 <30   | Poor - Focus on recovery                  |

@@ -28,24 +28,15 @@ async function fetchOuraData<T>(endpoint: string, token: string): Promise<T> {
 
   if (!response.ok) {
     const errorBody = await response.text();
-    console.error(
-      "Oura API Error:",
-      response.status,
-      response.statusText,
-      errorBody,
-    );
+    console.error("Oura API Error:", response.status, response.statusText, errorBody);
 
     if (response.status === 401) {
       throw new Error("Session expired. Please reconnect your Oura account.");
     }
     if (response.status === 403) {
-      throw new Error(
-        `Oura API access denied. Please reconnect your Oura account with required permissions.`,
-      );
+      throw new Error(`Oura API access denied. Please reconnect your Oura account with required permissions.`);
     }
-    throw new Error(
-      `Oura API error: ${response.status} ${response.statusText}`,
-    );
+    throw new Error(`Oura API error: ${response.status} ${response.statusText}`);
   }
 
   return response.json() as Promise<T>;
@@ -64,9 +55,7 @@ function getDateRange(): { start: string; end: string } {
   };
 }
 
-export async function getLatestBiometrics(
-  token: string,
-): Promise<BiometricData> {
+export async function getLatestBiometrics(token: string): Promise<BiometricData> {
   // Return mock data if enabled
   if (USE_MOCK_DATA) {
     return getMockBiometrics();
@@ -75,34 +64,19 @@ export async function getLatestBiometrics(
   const { start, end } = getDateRange();
 
   const [sleepData, readinessData] = await Promise.all([
-    fetchOuraData<OuraSleepData>(
-      `/daily_sleep?start_date=${start}&end_date=${end}`,
-      token,
-    ),
-    fetchOuraData<OuraReadinessData>(
-      `/daily_readiness?start_date=${start}&end_date=${end}`,
-      token,
-    ),
+    fetchOuraData<OuraSleepData>(`/daily_sleep?start_date=${start}&end_date=${end}`, token),
+    fetchOuraData<OuraReadinessData>(`/daily_readiness?start_date=${start}&end_date=${end}`, token),
   ]);
 
   // Get the most recent data
-  const latestSleep =
-    sleepData.data.length > 0
-      ? sleepData.data[sleepData.data.length - 1]
-      : null;
-  const latestReadiness =
-    readinessData.data.length > 0
-      ? readinessData.data[readinessData.data.length - 1]
-      : null;
+  const latestSleep = sleepData.data.length > 0 ? sleepData.data[sleepData.data.length - 1] : null;
+  const latestReadiness = readinessData.data.length > 0 ? readinessData.data[readinessData.data.length - 1] : null;
 
   return {
     sleepScore: latestSleep?.score ?? null,
     readinessScore: latestReadiness?.score ?? null,
     hrvBalance: latestReadiness?.contributors?.hrv_balance ?? null,
     restingHR: latestReadiness?.contributors?.resting_heart_rate ?? null,
-    date:
-      latestReadiness?.day ??
-      latestSleep?.day ??
-      new Date().toISOString().split("T")[0],
+    date: latestReadiness?.day ?? latestSleep?.day ?? new Date().toISOString().split("T")[0],
   };
 }

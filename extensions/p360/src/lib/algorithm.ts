@@ -14,9 +14,7 @@ import { BiometricData, DecisionReadiness, ReadinessStatus } from "../types";
  * - >= 30: Caution (yellow) - Consider waiting for big decisions
  * - < 30: Poor (red) - Avoid major decisions
  */
-export function calculateDecisionReadiness(
-  data: BiometricData,
-): DecisionReadiness {
+export function calculateDecisionReadiness(data: BiometricData): DecisionReadiness {
   // Use readiness score if available, otherwise fall back to sleep score
   let baseScore = data.readinessScore ?? data.sleepScore ?? 50;
 
@@ -74,8 +72,7 @@ function getStatusMessage(status: ReadinessStatus): string {
 
 function getRecommendation(status: ReadinessStatus): string {
   const recommendations: Record<ReadinessStatus, string> = {
-    excellent:
-      "Your body is in optimal state. Perfect time for negotiations, important emails, or strategic planning.",
+    excellent: "Your body is in optimal state. Perfect time for negotiations, important emails, or strategic planning.",
     good: "You're in a good state for everyday decisions. Proceed with confidence on routine matters.",
     caution:
       "Your readiness is below optimal. If possible, delay important decisions by a few hours or until tomorrow.",

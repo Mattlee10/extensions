@@ -23,8 +23,7 @@ function CheckReadinessCommand() {
         const result = calculateDecisionReadiness(biometrics);
         setReadiness(result);
       } catch (err) {
-        const message =
-          err instanceof Error ? err.message : "Failed to fetch data";
+        const message = err instanceof Error ? err.message : "Failed to fetch data";
         setError(message);
       } finally {
         setIsLoading(false);
@@ -52,12 +51,7 @@ ${error}
   }
 
   if (!readiness) {
-    return (
-      <Detail
-        isLoading={isLoading}
-        markdown="# Loading your biometric data..."
-      />
-    );
+    return <Detail isLoading={isLoading} markdown="# Loading your biometric data..." />;
   }
 
   const emoji = getStatusEmoji(readiness.status);
